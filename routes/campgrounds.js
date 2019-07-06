@@ -4,17 +4,16 @@ var Campground = require("../models/campground");
 var Comment = require("../models/comment");
 var middleware = require("../middleware");
 
-//INDEX
-
+//INDEX - show all campgrounds
 router.get("/", function(req, res){
-	//Get all campgrounds from DB
-	Campground.find({}, function(err, allCampgrounds){
-		if(err){
-			console.log(err);
-		} else {
-			res.render("campgrounds/index", {campgrounds: allCampgrounds});
-		}
-	});
+    // Get all campgrounds from DB
+    Campground.find({}, function(err, allCampgrounds){
+       if(err){
+           console.log(err);
+       } else {
+          res.render("campgrounds/index",{campgrounds: allCampgrounds, page: 'campgrounds'});
+       }
+    });
 });
 
 //Create - add new campground to DB
